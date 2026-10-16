@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="ja">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ImgOrPdf2Gif — GIF変換</title><link rel="stylesheet" href="./style.css"></head>
+<body><main>
+<header><span class="logo">G<span>↗</span></span><span>ImgOrPdf2Gif</span><small>GIF CONVERTER</small></header>
+<section class="intro"><p class="eyebrow">MAKE IT MOVE</p><h1>動きを、ひとつの GIF に。</h1><p>動画も、PDF も。ファイルを選んで、手軽にアニメーション。</p></section>
+<section class="card">
+<div class="tabs" role="group" aria-label="変換モード"><button type="button" class="active" data-mode="video" aria-pressed="true">▶ 動画 → GIF</button><button type="button" data-mode="pdf" aria-pressed="false">▤ PDF → GIF</button></div>
+<form id="converter"><input type="hidden" name="mode" value="video">
+<label class="drop" id="drop"><span class="upload">↑</span><strong>ファイルを選択、またはドロップ</strong><span id="formats">MP4 / WebM / MOV（ブラウザ対応形式）</span><input type="file" name="files" id="files" multiple required accept=".mp4,.webm,.mov"><span class="limit">最大10件・合計100MB</span></label>
+<ul id="selection"></ul>
+<div class="settings"><label>出力サイズ<select name="width"><option value="0">幅 480px（標準）</option><option value="480">幅 480px</option><option value="720">幅 720px</option><option value="1080">幅 1080px</option></select></label>
+<label id="video-setting">フレームレート<select name="fps"><option value="0">15 FPS（標準）</option><option value="10">10 FPS</option><option value="15">15 FPS</option><option value="24">24 FPS</option></select></label>
+<label id="pdf-setting" hidden>1ページの表示時間<select name="duration"><option value="500">0.5秒</option><option value="1000" selected>1秒</option><option value="2000">2秒</option><option value="3000">3秒</option></select></label></div>
+<p class="note" id="note">動画は60秒・600フレーム以内。サイズや FPS を下げると軽量化できます。</p>
+<button class="submit" type="submit">GIF に変換する <span>→</span></button>
+</form><p id="status" role="status" aria-live="polite"></p>
+<section id="result" hidden><h2>変換が完了しました</h2><img id="preview" alt="変換したGIFのプレビュー" hidden><a id="download" class="download">ダウンロード ↓</a><p id="zip-note" hidden>ZIPには変換結果を格納します。一部失敗した場合は errors.txt を確認してください。</p></section>
+</section><footer>変換はブラウザ内で完結します。ファイルをサーバーへ送信しません。<br>PDF は最大50ページ。大きなファイルは出力幅を下げてください。変換結果はこの画面から保存してください。</footer>
+</main><script src="./vendor/gif.js"></script><script type="module" src="./app.js"></script></body></html>

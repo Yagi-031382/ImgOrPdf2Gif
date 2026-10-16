@@ -5,3 +5,5 @@ instance/
 input_video/
 input_pdf/
 output_gif/
+
+node_modules/

@@ -1,0 +1,6 @@
+{
+  "name": "imgorpdf2gif-pages",
+  "private": true,
+  "scripts": {"test:pages": "node tests/pages.cjs"},
+  "devDependencies": {"@sparticuz/chromium": "141.0.0", "playwright": "1.56.1"}
+}

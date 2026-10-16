@@ -2,7 +2,32 @@
 
 動画と PDF を GIF に変換する日本語 Web アプリです。添付された `mp4togif.py` と `pdftogif.py` の処理を Web 用に統合しました。元のバッチスクリプトと操作マニュアルも残しています。
 
-## 起動
+## GitHub Pages 版（サーバー不要）
+
+`docs/` が公開用の静的アプリです。GitHub の **Settings → Pages → Deploy from a branch** で **main / /docs** を選んで保存してください（`dox` ではなく `docs`）。ビルド作業は不要です。
+
+公開先: `https://yagi-031382.github.io/ImgOrPdf2Gif/`
+
+動画・PDFをブラウザ内で変換し、ファイルをサーバーへ送信しません。依存ライブラリも同梱しています。PC の最新 Chrome / Edge / Firefox を推奨します。動画はブラウザが再生できる MP4 / WebM / MOV に対応し、コーデックによっては変換できません。動画は60秒・600フレームまで、PDFは50ページまで、合計100MB・10件までです。ブラウザのメモリを守るため総フレーム画素数にも上限があります。初期設定は幅480px・15 FPSです。PDFのページサイズが異なる場合は共通キャンバスの余白を白で埋めます。パスワード付きPDFは非対応です。大量のファイルやスマートフォンではメモリ不足になる場合があります。
+
+ローカル確認:
+
+```bash
+python3 -m http.server 8000 --bind 127.0.0.1
+# ブラウザでポート8000の /docs/ を開く（file:// での直接実行は不可）
+```
+
+ブラウザ統合テスト（Linux、Node.js 20以上、Python環境とFFmpegが必要）:
+
+```bash
+npm ci
+# 上記の静的サーバーを起動した状態で実行
+npm run test:pages
+```
+
+実ブラウザでPDF・WebMを変換し、ダウンロードしたGIFのフレーム数・表示時間・サイズ、部分失敗ZIP、外部送信がないことを検証します。
+
+## Python サーバー版の起動
 
 Python 3.10 以上、FFmpeg、Poppler が必要です。Ubuntu では次で導入できます。
 
